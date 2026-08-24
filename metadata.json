@@ -1,0 +1,6 @@
+{
+  "name": "IPsec Shield: AI-Powered VPN Protocol Analyzer & Security Assessment",
+  "description": "Comprehensive AI-driven IPsec VPN protocol analyzer, XGBoost traffic classifier, cryptographic strength evaluator, and automated security assessment reporting platform.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
