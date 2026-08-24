@@ -1,0 +1,74 @@
+# Configuration matrix used to generate labeled IPsec traffic variants.
+# Each combination becomes one strongSwan conn block + one ground-truth
+# JSON label file, consumed later by the capture and ML pipeline.
+#
+# NOTE: not every combination is valid for every ike_version (e.g. GCM
+# suites are IKEv2/ESN aware). generate_configs.py skips invalid combos.
+
+ike_versions:
+  - ikev1
+  - ikev2
+
+modes:
+  ikev1:
+    - main
+    - aggressive
+  ikev2:
+    - null   # IKEv2 has no main/aggressive distinction
+
+encapsulation:
+  - tunnel
+  - transport
+
+encryption_algorithms:
+  - name: 3des
+    strength: weak
+  - name: aes128cbc
+    strength: moderate
+  - name: aes256cbc
+    strength: moderate
+  - name: aes128gcm16
+    strength: strong
+  - name: aes256gcm16
+    strength: strong
+  - name: chacha20poly1305
+    strength: strong
+
+dh_groups:
+  - name: modp1024
+    strength: weak
+  - name: modp1536
+    strength: weak
+  - name: modp2048
+    strength: moderate
+  - name: ecp256
+    strength: strong
+  - name: ecp384
+    strength: strong
+  - name: curve25519
+    strength: strong
+
+pfs:
+  - true
+  - false
+
+ip_versions:
+  - ipv4
+  - ipv6
+
+key_lifetime_seconds:
+  - 3600     # 1h  -> strong
+  - 28800    # 8h  -> moderate
+  - 86400    # 24h -> weak
+  - 172800   # 48h -> weak
+
+replay_protection:
+  - true
+  - false
+
+traffic_types:
+  - bulk_transfer
+  - interactive_ssh
+  - dns_like_burst
+  - video_streaming
+  - web_browsing
