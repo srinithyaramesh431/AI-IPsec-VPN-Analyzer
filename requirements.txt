@@ -1,0 +1,12 @@
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+pyshark==0.6
+scapy==2.6.0
+scikit-learn==1.5.2
+pandas==2.2.2
+numpy==1.26.4
+joblib==1.4.2
+python-multipart==0.0.9
+pydantic==2.9.2
+sqlalchemy==2.0.35
+pyyaml==6.0.2
